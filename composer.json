@@ -1,0 +1,8 @@
+{
+    "require": {
+        "symfony/flex": "^1.9"
+    },
+    "require-dev": {
+        "symfony/dotenv": "^5.1"
+    }
+}
