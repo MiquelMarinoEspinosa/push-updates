@@ -29,11 +29,11 @@ services:
     ports:
       - 80:80
     environment:
-      - JWT_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.4LkW_iatk4RpCyLJErmVLVacuZpQzTB-O3NcwIi8q6c'
+      - JWT_KEY=${MERCURE_JWT_TOKEN}
       - DEMO=1
       - ALLOW_ANONYMOUS=1
       - CORS_ALLOWED_ORIGINS=*
-      - PUBLISH_ALLOWED_ORIGINS='http://localhost'
+      - PUBLISH_ALLOWED_ORIGINS=${MERCURE_PUBLISH_URL}
     networks:
       real_time_net:
         ipv4_address: 172.19.1.4
