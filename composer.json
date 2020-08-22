@@ -1,10 +1,36 @@
 {
-    "require": {
-        "symfony/flex": "^1.9",
-        "symfony/console": "^5.1",
-        "symfony/mercure-bundle": "^0.2.5"
-    },
-    "require-dev": {
-        "symfony/dotenv": "^5.1"
+  "name": "php/real-time",
+  "license": "free",
+  "description": "Php real time mercure",
+  "keywords": [
+    "php",
+    "real-time",
+    "mercure"
+  ],
+  "authors": [
+    {
+      "name": "php-console",
+      "email": "php@console.com"
     }
+  ],
+  "require": {
+    "symfony/flex": "^1.9",
+    "symfony/mercure-bundle": "^0.2.5",
+    "symfony/dotenv": "^5.1",
+    "symfony/framework-bundle": "^5.1",
+    "symfony/console": "^5.1",
+    "symfony/yaml": "^5.1"
+  },
+  "require-dev": {},
+  "autoload": {
+    "psr-4": {
+      "App\\": "src"
+    }
+  },
+  "scripts": {
+    "auto-scripts": {
+      "cache:clear": "symfony-cmd",
+      "assets:install %PUBLIC_DIR%": "symfony-cmd"
+    }
+  }
 }
