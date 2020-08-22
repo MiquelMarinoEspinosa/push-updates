@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real Time</title>
+  </head>
+  <body>
+    <div>The updates will be displayed bellow</div>
+    <div><ul id="updates"></ul></div>
+  </body>
+  <script>
+    const eventSource = new EventSource(
+      "http://localhost:3000/.well-known/mercure?topic=" +
+        encodeURIComponent("http://example.com/test")
+    );
+    eventSource.onmessage = (event) => {
+      // Will be called every time an update is published by the server
+      console.log(JSON.parse(event.data));
+      const updatesList = document.getElementById("updates");
+      const item = document.createElement("li");
+      item.innerHTML = event.data;
+      updatesList.appendChild(item);
+    };
+  </script>
+</html>

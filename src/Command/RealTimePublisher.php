@@ -7,6 +7,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Mercure\PublisherInterface;
 use Symfony\Component\Mercure\Update;
+use Symfony\Component\Console\Input\InputArgument;
 
 class RealTimePublisher extends Command
 {
@@ -20,17 +21,18 @@ class RealTimePublisher extends Command
   protected function configure()
   {
     $this
-        ->setDescription('Publish a real-time message');
+        ->setDescription('Publish a real-time message')
+        ->addArgument('message', InputArgument::REQUIRED, 'The meesage content to be publish');
   }
   
   protected function execute(InputInterface $input, OutputInterface $output)
   {
     $update = new Update(
-      'http://example.com/books/1',
-      json_encode(['status' => 'OutOfStock'])
+      'http://example.com/test',
+      json_encode(['message' => $input->getArgument('message')])
     );
     ($this->publisher)($update);
-    $output->writeln('<info>Success!!</info>');
+    $output->writeln('<info>Message sent</info>');
     return Command::SUCCESS;
   }
 }
