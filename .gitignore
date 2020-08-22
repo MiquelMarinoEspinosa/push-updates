@@ -1,5 +1,4 @@
 vendor
-bin
 .env
 ###> symfony/framework-bundle ###
 /.env.local
