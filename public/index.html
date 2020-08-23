@@ -6,18 +6,21 @@
     <title>Real Time</title>
   </head>
   <body>
-    <div>The updates will be displayed bellow</div>
-    <div><ul id="updates"></ul></div>
+    <div>The sync updates will be displayed bellow</div>
+    <div><ul id="sync-updates"></ul></div>
   </body>
   <script>
-    const eventSource = new EventSource(
-      "http://localhost:3000/.well-known/mercure?topic=" +
-        encodeURIComponent("http://example.com/test")
-    );
+    const url = new URL("http://localhost:3000/.well-known/mercure");
+    url.searchParams.append("topic", "http://example.com/test");
+
+    const eventSource = new EventSource(url);
     eventSource.onmessage = (event) => {
       // Will be called every time an update is published by the server
+      const data = JSON.parse(event.data);
       console.log(JSON.parse(event.data));
-      const updatesList = document.getElementById("updates");
+      const updateLitsId =
+        data.type === "sync" ? "sync-updates" : "async-updates";
+      const updatesList = document.getElementById(updateLitsId);
       const item = document.createElement("li");
       item.innerHTML = event.data;
       updatesList.appendChild(item);

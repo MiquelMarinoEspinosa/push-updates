@@ -9,7 +9,7 @@ use Symfony\Component\Mercure\PublisherInterface;
 use Symfony\Component\Mercure\Update;
 use Symfony\Component\Console\Input\InputArgument;
 
-class RealTimePublisher extends Command
+class RealTimeSyncPublisher extends Command
 {
   private PublisherInterface $publisher;
   public function __construct(PublisherInterface $publisher) {
@@ -17,7 +17,7 @@ class RealTimePublisher extends Command
     parent::__construct();
   }
 
-  protected static $defaultName = 'real-time:publish';
+  protected static $defaultName = 'real-time:publish-sync';
   protected function configure()
   {
     $this
@@ -27,12 +27,23 @@ class RealTimePublisher extends Command
   
   protected function execute(InputInterface $input, OutputInterface $output)
   {
+    $messageContent = json_encode(
+      [
+          'message' => $input->getArgument('message'),
+          'type' => 'sync',
+          'date' => date('d-m-Y H:i:s')
+      ]
+    );
+    
     $update = new Update(
       'http://example.com/test',
-      json_encode(['message' => $input->getArgument('message')])
+      $messageContent
     );
+    
     ($this->publisher)($update);
-    $output->writeln('<info>Message sent</info>');
+    $output->write('<info>Message content: </info>');
+    $output->writeln('<info>' . $messageContent . '</info>');
+    $output->writeln('<info>The message has been sent!</info>');
     return Command::SUCCESS;
   }
 }
