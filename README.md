@@ -77,7 +77,7 @@ There is the option to register as a subscriber using the [mercure local web int
 
   `redis-cli`
 
-  `XINFO messages`
+  `XINFO STREAM messages`
 
 ### Mercure web server
 
@@ -85,7 +85,7 @@ There is the option to register as a subscriber using the [mercure local web int
 
 - Change the token for the one has been created previously
 
-- Subscribe to the updates
+- Subscribe for updates to the topic `http://example.com/test`
 
 ### Other usefull docker commands
 

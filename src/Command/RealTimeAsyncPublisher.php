@@ -48,7 +48,8 @@ class RealTimeAsyncPublisher extends Command
     $output->write('<info>Message content: </info>');
     $output->writeln('<info>' . $messageContent . '</info>');
     $output->writeln('<info>The message has been sent!</info>');
-    $output->writeln('<info>Consume the message from the queue to transfer it</info>');
+    $output->writeln('<info>Consume the message from the queue to transfer it executing the command:</info>');
+    $output->writeln('<info>bin/console messenger:consume</info>');
     return Command::SUCCESS;
 
   }
