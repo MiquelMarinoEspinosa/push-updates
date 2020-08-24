@@ -64,17 +64,20 @@ There is the option to register as a subscriber using the [mercure local web int
 ### Redis
 
 - To access to the redis
+
   `redis-cli`
 
 - To see the length of messages in the redis queue
+
   `redis-cli`
 
-`XLEN messages`
+  `XLEN messages`
 
 - To see the information related to the redis queue
+
   `redis-cli`
 
-`XINFO messages`
+  `XINFO messages`
 
 ### Mercure web server
 
@@ -88,34 +91,44 @@ There is the option to register as a subscriber using the [mercure local web int
 
 - Acces to a one container via shell
 
-`docker exec -i -t CONTAINER_NAME sh`
+  `docker exec -i -t CONTAINER_NAME sh`
 
 - Stop one container
+
   `docker stop CONATINER_NAME`
 
 - Stop all the containers
+
   `docker stop $(docker ps -a -q)`
 
 - List the current running containers
+
   `docker ps`
 
 - List all the containers
+
   `docker ps -a`
 
 - Remove one container
+
   `docker rm CONATINER_NAME`
 
 - Remove all the containers
+
   `docker rm $(docker ps -a -q)`
 
 - List the main docker images
+
   `docker images`
 
 - List all the docker images
+
   `docker images -a`
 
 - Remove one docker image
+
   `docker rmi IMAGE_NAME`
 
 - Remove all the docker images
+
   `docker rmi $(docker ps -a -q)`
