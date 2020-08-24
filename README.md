@@ -25,25 +25,25 @@ There is the option to register as a subscriber using the [mercure local web int
 
 - Run the docker containers
 
-`docker-compose up`
+  `docker-compose up`
 
 - Install the dependencies
 
-`docker exec -i -t real-time.php-console composer install`
+  `docker exec -i -t real-time.php-console composer install`
 
 - Access to the mercure local web interface
 
-`open http://localhost:3000/`
+  `open http://localhost:3000/`
 
 - Open the index.html file
 
-`open public/index.html`
+  `open public/index.html`
 
 ## Sync push updates
 
 - To send one push update use the `real-time:publish-sync` command with the message content as an argument.
 
-`docker exec -i -t real-time.php-console bin/console real-time:publish-sync 'Hello sync world'`
+  `docker exec -i -t real-time.php-console bin/console real-time:publish-sync 'Hello sync world'`
 
 - Observe that in the `index.html` the update has been displayed.
 
@@ -51,11 +51,11 @@ There is the option to register as a subscriber using the [mercure local web int
 
 - To send one push update use the `real-time:publish-async` with the message content as an argument.
 
-`docker exec -i -t real-time.php-console bin/console real-time:publish-async 'Hello async world'`
+  `docker exec -i -t real-time.php-console bin/console real-time:publish-async 'Hello async world'`
 
 - Consume the redis queue
 
-`docker exec -i -t real-time.php-console bin/console messenger:consume`
+  `docker exec -i -t real-time.php-console bin/console messenger:consume`
 
 - Observe that in the `index.html` the update has been displayed.
 
